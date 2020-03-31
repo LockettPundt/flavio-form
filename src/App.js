@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+/* eslint-disable react/jsx-filename-extension */
+import React, { useState } from 'react';
 import './App.css';
+import CardList from './components/CardList';
+import Card from './components/Card';
+import Form from './components/Form';
 
-function App() {
+const App = () => {
+  const [cards, setCards] = useState([]);
+
+  const addNewCard = (cardInfo) => {
+    setCards(cards.concat(cardInfo));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form onSubmit={addNewCard} />
+      <CardList cards={cards} />
     </div>
   );
-}
+};
 
 export default App;
